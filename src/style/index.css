@@ -1,0 +1,64 @@
+@import "iconfont.css";
+*{
+    margin: 0;
+    padding: 0;
+}
+/*scrollbar水平滚动条*/
+.el-scrollbar__wrap {
+    overflow-x: hidden;
+}
+
+/*水平菜单 垂直菜单 宽度修改*/
+.el-menu--collapse{
+  width: 200px!important;
+}
+.el-menu--popup{
+  box-shadow: none!important;
+    padding: 0!important;
+}
+/*浮动导航子菜单*/
+.el-menu--vertical{
+    left:195px!important;
+}
+.el-menu--horizontal>.el-menu-item{
+  width: 200px!important;
+}
+/*取消链接颜色和下划线*/
+a:link,a:visited,a:hover,a:active{
+    color:#000;
+    text-decoration: none!important;
+}
+/*取消默认子菜单的右箭头*/
+.el-menu-item span i.el-icon-caret-right:before{
+    content: '';
+}
+/*选中导航增加背景样式*/
+.is-active{
+    background: #eee!important;
+}
+/*选中子菜单激活父菜单*/
+/*.is-active>div{
+    color:red!important;
+    background: #eee!important;
+}
+.is-active>div>i{
+    color:red!important;
+    background: transparent!important;
+}*/
+
+.headerTop{
+    background: #00a2d4;
+    color: #fff;
+    line-height: 50px;
+    min-width: 320px; /*已经是最小手机屏幕了 不让缩了 让出现水平滚动条*/
+}
+
+/*左侧导航*/
+.leftNav{
+    position: absolute;top:50px;left:0;bottom:0; overflow: auto; background:#545c64;
+}
+/*内容区域*/
+.contentMain{
+    position: absolute;left:200px;right:0;bottom:0;top:50px;
+}
+
