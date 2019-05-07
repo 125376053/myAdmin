@@ -10,16 +10,16 @@ Vue.use(Router)
 
 export const adminRouterMap = [
     {
-        path: '/tree',
+        path: '/scan',
         component: Layout,
-        redirect: 'tree/treeIndex',
+        redirect: 'scan/scanIndex',
         children: [
             {
-                path: "treeIndex",
-                component: () => import ("@/pages/tree.vue"),
-                name: "treeIndex",
+                path: "scanIndex",
+                component: () => import ("@/pages/scan.vue"),
+                name: "scanIndex",
                 meta: {
-                    title: "树",
+                    title: "扫描",
                     icon: "iconfont icon-shouye-xuanzhong"
                 }
             }
@@ -31,102 +31,41 @@ export const constantRouterMap = [
     {
         path: '/',
         component: Layout,
-        redirect: 'areaSchool/areaIndex',
+        redirect: 'scan/scanIndex',
     },
     {
         path: '*',
         component: Layout,
-        redirect: 'areaSchool/areaIndex',
+        redirect: 'scan/scanIndex',
     },
     {
-        path: '/areaSchool',
+        path: '/scan',
         component: Layout,
-        redirect: 'areaSchool/areaIndex',
+        redirect: 'scan/scanIndex',
         children: [
             {
-                path: "areaIndex",
-                component: () => import ("@/pages/areaSchool.vue"),
-                name: "areaIndex",
+                path: "scanIndex",
+                component: () => import ("@/pages/scan.vue"),
+                name: "scanIndex",
                 meta: {
-                    title: "学校",
+                    title: "扫描",
                     icon: "iconfont icon-shouye-xuanzhong"
                 }
             }
         ]
     },
     {
-        path: '/buju',
+        path: '/saomiao',
         component: Layout,
-        redirect: 'bujuIndex',
-        name: "buju",
-        meta: {
-            title: "布局",
-            icon: "iconfont icon-dingdan-copy"
-        },
+        redirect: 'saomiao/saomiaoIndex',
         children: [
             {
-                path: "bujuIndex",
-                component: () => import ("@/pages/buju.vue"),
-                name: "bujuIndex",
-                hidden: false,
+                path: "saomiaoIndex",
+                component: () => import ("@/pages/saomiao.vue"),
+                name: "saomiaoIndex",
                 meta: {
-                    title: "布局",
-                    icon: ""
-                }
-            },
-            {
-                path: "form",
-                component: () => import ("@/pages/form.vue"),
-                name: "form",
-                hidden: false,
-                meta: {
-                    title: "表单",
-                    icon: ""
-                }
-            }
-        ]
-    },
-    {
-        path: '/monitor',
-        component: Layout,
-        redirect: 'monitor/table',
-        name: "monitor",
-        meta: {
-            title: "",
-            icon: "iconfont icon-jiankong "
-        },
-        children: [
-            {
-                path: "table",
-                component: () => import ("@/pages/table.vue"),
-                name: "table",
-                hidden: false,
-                meta: {
-                    title: "监控报告",
-                    icon: "",
-                }
-            }
-        ]
-    },
-    {
-        path: '/monitor2',
-        component: Layout,
-        redirect: 'monitor2/testApi',
-        hidden: false,
-        name: "monitor2",
-        meta: {
-            title: "",
-            icon: "iconfont icon-jiankong "
-        },
-        children: [
-            {
-                path: "testApi",
-                component: () => import ("@/pages/testApi"),
-                name: "testApi",
-                hidden: false,
-                meta: {
-                    title: "监控报告详情22",
-                    icon: "",
+                    title: "扫描体验",
+                    icon: "iconfont icon-shouye-xuanzhong"
                 }
             }
         ]
