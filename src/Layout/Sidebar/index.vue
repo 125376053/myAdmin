@@ -23,7 +23,7 @@ import SidebarItem from "./SidebarItem";
 export default {
   data () {
     return {
-        collapse:false //水平浮动子菜单true  下拉子菜单false
+        collapse:true //水平浮动子菜单true  下拉子菜单false
     };
   },
   components: {
