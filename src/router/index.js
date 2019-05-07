@@ -69,6 +69,42 @@ export const constantRouterMap = [
                 }
             }
         ]
+    },
+    {
+        path: '/zhang',
+        component: Layout,
+        redirect: 'zhang/windowIndex',
+        /*2级菜单 父元素必须要有标题*/
+        meta: {
+            title: "快速签发服务",
+            icon: "iconfont icon-dingdan-copy",
+            isAdmin:1
+        },
+        children: [
+            {
+                path: "windowIndex",
+                component: () => import ("@/pages/zhang1.vue"),
+                name: "windowIndex",
+                meta: {
+                    title: "窗口1",
+                    icon: "iconfont icon-shouye-xuanzhong",
+                    open:true
+                },
+                hidden: false,
+            },
+            {
+                path: "windowIndex2",
+                component: () => import ("@/pages/zhang2.vue"),
+                name: "windowIndex2",
+                meta: {
+                    title: "窗口2",
+                    icon: "iconfont icon-shouye-xuanzhong",
+                    open:true
+                },
+                hidden: false,
+            },
+
+        ]
     }
 ]
 export default new Router({

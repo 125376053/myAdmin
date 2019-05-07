@@ -47,6 +47,11 @@ a:link,a:visited,a:hover,a:active{
     background: transparent!important;
 }*/
 
+.el-menu-item:hover{
+    color:red!important;
+    background: rgba(0,0,0,.8)!important;
+}
+
 .headerTop{
     background: #00a2d4;
     color: #fff;

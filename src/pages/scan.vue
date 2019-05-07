@@ -24,6 +24,7 @@
             height="300"
             @select="selectCheck"
             @select-all="selectCheckAll"
+            @selection-change="handleSelectionChange"
         >
             <el-table-column
                 type="selection"
@@ -98,7 +99,7 @@
             }
         },
         mounted(){
-            this.showData()
+            //this.showData()
         },
         methods:{
             showData(){
@@ -134,8 +135,8 @@
                 this.sendData(sendJson)
                 this.curId = id
             },
-            sendData(obj,cb) {
-                var txt = JSON.stringify(obj);
+            sendData(obj) {
+                var txt = JSON.stringify(obj)
                 if (bindid1 == 0) {
                     if (bindid1 != 0)
                         return;
@@ -209,24 +210,21 @@
                 }
             },
             allSelection(){
-//                this.table.forEach((item)=>{
-//                    this.$refs.multipleTable.toggleAllSelection(item.isSelected,0);
-//                })
+                this.table.forEach((item)=>{
+                    this.$refs.multipleTable.toggleAllSelection(item.isSelected,0);
+                })
             },
             selectCheck(selection,row){
-                console.log(selection);
-                console.log(row);
-//                if ($(this).is(':checked')) {
-//                    sendJson["method"] = "checked";
-//                } else {
-//                    sendJson["method"] = "unChecked";
-//                }
-//                alert(JSON.stringify(sendJson))
-                this.sendData({
-                    "cmd":"scanConfig",
-                    "ids":selection.id,
-                    "method":"checked"
+                var re = this.multipleSelection.find((item,index,arr)=>{
+                    return item.id === row.id
                 })
+                var isSelect = re?"checked":"unChecked"
+                var data ={
+                    "cmd":"scanConfig",
+                    "ids":''+row.id,
+                    "method":isSelect
+                }
+                this.sendData(data)
             },
             selectCheckAll(selection){
                 var allData={
@@ -234,8 +232,11 @@
                     "ids":'',
                     "method":selection.length>0?"checked":"unChecked"
                 }
-                alert(JSON.stringify(allData))
                 this.sendData(allData)
+            },
+            handleSelectionChange(val){
+                //alert(JSON.stringify(val))
+                this.multipleSelection = val
             },
             currentChange(val){
                 this.size=val

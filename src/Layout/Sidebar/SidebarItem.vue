@@ -26,21 +26,39 @@
             <el-submenu v-else :index="item.name||item.path" :key="item.name" ref="test">
                 <template slot="title">
                     <!-- <img class="imgStyle" v-if="item.meta&&item.meta.icon" :src="'static/'+item.meta.icon+'.png'"> -->
+
                     <i :class="item.meta.icon" v-if="item.meta&&item.meta.icon"></i>
                     <span v-show="item.meta&&item.meta.title" :class="item.meta&&item.meta.icon?'':'falseIcon'"
                           slot="title">{{item.meta.title}}</span>
                 </template>
                 <template v-for="child in item.children" v-if="!child.hidden">
-                    <sidebar-item :is-nest="true" class="nest-menu" v-if="child.children&&child.children.length>0"
-                                  :routes="[child]" :key="child.path"></sidebar-item>
-                    <router-link v-else :to="item.path+'/'+child.path" :key="child.name">
-                        <el-menu-item :index="item.path+'/'+child.path">
-                            <!-- <img class="imgStyle" v-if="child.meta&&child.meta.icon" :src="'static/'+item.meta.icon+'.png'"> -->
-                            <i :class="child.meta.icon" v-if="child.meta&&child.meta.icon"></i>
-                            <span v-if="child.meta&&child.meta.title" slot="title"><i style="font-size:12px;width:10px;"
-                                                                                      class="el-icon-caret-right"></i>{{child.meta.title}}</span>
-                        </el-menu-item>
-                    </router-link>
+                    <sidebar-item
+                        :is-nest="true"
+                        class="nest-menu"
+                        v-if="child.children&&child.children.length>0"
+                        :routes="[child]"
+                        :key="child.path"
+                    ></sidebar-item>
+
+                    <div v-else>
+                        <router-link v-if="!child.meta.open" :to="item.path+'/'+child.path" :key="child.name">
+                            <el-menu-item :index="item.path+'/'+child.path">
+                                <!-- <img class="imgStyle" v-if="child.meta&&child.meta.icon" :src="'static/'+item.meta.icon+'.png'"> -->
+                                <i :class="child.meta.icon" v-if="child.meta&&child.meta.icon"></i>
+                                <span v-if="child.meta&&child.meta.title" slot="title"><i style="font-size:12px;width:10px;"
+                                                                                          class="el-icon-caret-right"></i>{{child.meta.title}}</span>
+                            </el-menu-item>
+                        </router-link>
+                        <div v-else @click="openWindow">
+                            <el-menu-item :index="item.path+'/'+child.path">
+                                <!-- <img class="imgStyle" v-if="child.meta&&child.meta.icon" :src="'static/'+item.meta.icon+'.png'"> -->
+                                <i :class="child.meta.icon" v-if="child.meta&&child.meta.icon"></i>
+                                <span v-if="child.meta&&child.meta.title" slot="title"><i style="font-size:12px;width:10px;"
+                                                                                          class="el-icon-caret-right"></i>{{child.meta.title}}</span>
+                            </el-menu-item>
+                        </div>
+                    </div>
+
                 </template>
             </el-submenu>
         </template>
@@ -72,6 +90,9 @@
                     return true;
                 }
                 return false;
+            },
+            openWindow(){
+                window.open('http://www.baidu.com')
             }
         }
     };

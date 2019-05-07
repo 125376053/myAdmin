@@ -13,16 +13,19 @@
             return{
                 totalNum:0,
                 step:0,
-                scount:0,
-                fcount:0
+                count : 0, //进度条
+
+                failNum : 0, //失败计数器
+                suNum:0,
+                scount:0, //成功个数
+                fcount:0, //失败个数
             }
         },
         mounted(){
-            alert(123)
             var sendJson = {};
             sendJson["cmd"] = 'scanTask';
             sendJson["method"] = "start";
-            this.sendData(sendJson)
+            //this.sendData(sendJson)
         },
         methods:{
             sendData(obj) {
@@ -63,40 +66,32 @@
                 });
             },
             render(res){
-                alert('能不能进来')
-                console.log(res);
-                console.log(typeof res);
-                console.log(res.cmd, res.method,res.totalNum);
-                var count = 0;
-                var fail = 0;
                 if(res.cmd == "scanTask"){
                     if (res.method == "start") {
-                        alert(JSON.stringify(res))
                         if (res.retCode == 0) {
                             this.totalNum = parseInt(JSON.parse(res.totalNum));
                         }
                     }else if (res.method == "scan") {
-                        count = count+1;
-//                        $(".progress span").css("width",count/$(".scanNum").val()*100+"%");
-//                        $(".alreadyNum").text(count);
-                        this.step = count/this.totalNum*100
-                        this.scount= count
+                        this.count = this.count+1;
+                        this.step = this.count/this.totalNum*100
                         if (res.retCode != 0) {
-                            fail++;
-                            if (fail) {
-                                this.fcount = fail
+                            this.failNum++;
+                            if (this.failNum) {
+                                this.fcount = this.failNum
                             }else{
                                 this.fcount = 0
                             }
-
+                        }else{
+                            this.suNum++;
+                            if (this.suNum) {
+                                this.scount= this.suNum
+                            }else{
+                                this.scount = 0
+                            }
                         }
                     }else if (res.method == "complete") {
                         if (res.retCode == 0) {
-                            //cancelAnimationFrame(timeControl);
-//                            $(".scanText").text("扫描完成！");
-//                            $(".cancelScan").hide();
-//                            $(".checkReport").show();
-//                            $(".layerTime img").addClass("pause");
+                            //alert('扫描完成')
                         }
                     }
                 }

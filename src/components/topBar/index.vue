@@ -42,11 +42,11 @@
         },
         watch: {
             $route() {
-                this.getTitle()
+               // this.getTitle()
             }
         },
         mounted(){
-            this.getTitle()
+           // this.getTitle()
         }
     }
 </script>
