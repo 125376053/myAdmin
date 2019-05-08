@@ -15,7 +15,7 @@
     </div>
 </template>
 <script>
-    var workwinQuickOder = null
+    window.workwinQuickOder = null
     export default{
         data(){
             return{
@@ -29,6 +29,24 @@
                 alert('缓存有变动'+e.newValue);
                 this.infor = JSON.parse(window.localStorage.getItem('infor'))
             });
+
+            //跨域缓存
+            // 子窗口 postMessage 发送登录infor, 父窗口message监听 infor 存入localstore
+
+        },
+        // 可以访问和修改数据 不会触发死循环
+        beforeUpdate(){
+            // this.infor =
+            console.log(window.localStorage.getItem('infor'))
+            console.log('333333333333333333');
+            console.log('444444444444444444');
+        },
+        // 只有数据进行渲染后才会触发 不能修改数据(死循环) 可以操作dom
+        updated(){
+            // 也就是数据绑定后才能触发
+            console.log('))))))))))');
+            console.log(this.infor);
+            console.log('))))))))))');
         },
         methods:{
             loginMessage(){
@@ -37,6 +55,7 @@
                     param:"hello frome work",
                     onSuccess: function(response) {},
                     onFailure: function(error_code, error_message) {
+                        alert(workwinQuickOder)
                         if(error_code==2120){
                             if(workwinQuickOder == null){
                                 workwinQuickOder =  ixindev.open('#/login',"","resizable=1, dialog=no,left=20,top=20,width=960,height=600");
