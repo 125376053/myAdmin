@@ -19,6 +19,7 @@ Object.keys(utils).forEach(key => {
     Vue.prototype[key]=utils[key]
 });
 
+
 new Vue({
     el: '#app',
     router,

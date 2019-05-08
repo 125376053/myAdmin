@@ -12,7 +12,7 @@ export const adminRouterMap = [
     {
         path: '/scan',
         component: Layout,
-        redirect: 'scan/scanIndex',
+        redirect: '/scan/scanIndex',
         children: [
             {
                 path: "scanIndex",
@@ -31,17 +31,17 @@ export const constantRouterMap = [
     {
         path: '/',
         component: Layout,
-        redirect: 'scan/scanIndex',
+        redirect: '/scan/scanIndex',
     },
-    {
-        path: '*',
-        component: Layout,
-        redirect: 'scan/scanIndex',
-    },
+    // {
+    //     path: '*',
+    //     component: Layout,
+    //     redirect: 'scan/scanIndex',
+    // },
     {
         path: '/scan',
         component: Layout,
-        redirect: 'scan/scanIndex',
+        redirect: '/scan/scanIndex',
         children: [
             {
                 path: "scanIndex",
@@ -73,7 +73,7 @@ export const constantRouterMap = [
     {
         path: '/zhang',
         component: Layout,
-        redirect: 'zhang/windowIndex',
+        redirect: '/zhang/windowIndex',
         /*2级菜单 父元素必须要有标题*/
         meta: {
             title: "快速签发服务",
@@ -105,7 +105,27 @@ export const constantRouterMap = [
             },
 
         ]
-    }
+    },
+    {
+        path: '/order',
+        component: () => import ("@/pages/order.vue"),
+        name:'order',
+        meta: {
+            title: "order",
+            icon: "iconfont icon-shouye-xuanzhong"
+        }
+    },
+    {
+        path: "/login",
+        component: () =>
+            import ("@/pages/login"),
+        name: "clientLogin",
+        hidden: true,
+        meta: {
+            title: "登录",
+            icon: "el-icon-menu"
+        }
+    },
 ]
 export default new Router({
     scrollBehavior: () => ({

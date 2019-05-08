@@ -131,6 +131,10 @@ if(!ixindev)
 	};
 	ixindev.serviceurl = window.location.href.split("/__itrus5").shift();
 	ixindev.open = function(URL,name,features,replace){
+		alert(URL)
+		alert(name)
+		alert(features)
+		alert(replace)
 		if(1&&!!features){
 			features = features.replace(/(^\s*)|(\s*$)/g,"");
 			var arr = features.split(",");

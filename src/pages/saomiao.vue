@@ -25,7 +25,7 @@
             var sendJson = {};
             sendJson["cmd"] = 'scanTask';
             sendJson["method"] = "start";
-            //this.sendData(sendJson)
+            this.sendData(sendJson)
         },
         methods:{
             sendData(obj) {

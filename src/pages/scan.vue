@@ -79,7 +79,11 @@
         }">
             <el-button>扫描</el-button>
         </router-link>
-
+        <el-button @click="readFileText">导入</el-button>
+        <el-button @click="exportCsvFile">导出</el-button>
+        <router-link :to="{
+            path:'/order'
+        }">order</router-link>
     </div>
 </template>
 <script>
@@ -99,7 +103,7 @@
             }
         },
         mounted(){
-            //this.showData()
+            this.showData()
         },
         methods:{
             showData(){
@@ -207,6 +211,20 @@
                             alert(res.info)
                         }
                     }
+                    if (res.method == "import") {
+                        if (res.retCode == 0) {
+                            alert("导入成功" + res.succeedNum + "条，失败" + res.failedNum);
+                            this.showData()
+                        }else{
+                            alert("导入失败，请重新导入！")
+                        }
+                    } else if (res.method == "export") {
+                        if (res.retCode == 0) {
+
+                        }else{
+                            alert("导出失败，请重新导出！")
+                        }
+                    }
                 }
             },
             allSelection(){
@@ -243,6 +261,64 @@
                 console.log(this.size)
                 this.showData()
             },
+            // 导入文件
+            readFileText() {
+                ixindev.fileApi({
+                    cmd: "read",
+                    file: "server",
+                    filter: '.cvs',
+                    text: "",
+                    title: "选择文件",
+                    onSuccess:(response) => {
+                        var jsonret = JSON.parse(response);
+                        if ("{}" == JSON.stringify(jsonret)) {
+
+                        } else {
+//                            if (filterStr == ".csv") {
+//
+//                            } else {
+//                                if (jsonret.file){
+//                                    alert(jsonret.file);
+//                                }
+//                                return jsonret.file;
+//                            }
+                            var sendJson = {};
+                            sendJson["method"] = "import";
+                            sendJson["text"] = jsonret.text;
+                            sendJson["cmd"] = "scanConfig";
+                            this.sendData(sendJson);
+                        }
+                    },
+                    onFailure: function(error_code, error_message) {
+                        alert(error_code + " : " + error_message);
+                    }
+                });
+            },
+            // 到处文件
+            exportCsvFile() {
+                ixindev.fileApi({
+                    cmd: "save",
+                    file: "config",
+                    filter: '.cvs',
+                    text: "",
+                    title: "导出文件",
+                    onSuccess: (response) => {
+                        var jsonret = JSON.parse(response);
+                        if ("{}" == JSON.stringify(jsonret)) {
+
+                        } else {
+                            var sendJson = {};
+                            sendJson["method"] = "export";
+                            sendJson["fileName"] = jsonret.file;
+                            sendJson["cmd"] = "scanConfig";
+                            this.sendData(sendJson);
+                        }
+                    },
+                    onFailure: function(error_code, error_message) {
+                        alert(error_code + " : " + error_message);
+                    }
+                });
+            }
         }
     }
 </script>

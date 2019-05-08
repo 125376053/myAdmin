@@ -8,7 +8,7 @@ NProgress.configure({
 })
 router.beforeEach((to, from, next) => {
     NProgress.start()
-    routerArray()
+    //routerArray()
     next()
 })
 
