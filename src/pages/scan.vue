@@ -103,7 +103,19 @@
             }
         },
         mounted(){
-            this.showData()
+            alert(window.location.href)
+            window.addEventListener('message',function(e){
+                alert(123)
+                alert(e.data)
+            })
+
+            window.opener.postMessage('shoudaole','*')
+
+            window.onunload=function(){
+                window.opener.postMessage('子窗口关闭了','*')
+            }
+
+            //this.showData()
         },
         methods:{
             showData(){
