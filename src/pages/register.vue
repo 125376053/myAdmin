@@ -1,6 +1,6 @@
 <template>
     <div>
-        123
+        注册
     </div>
 </template>
 <script>

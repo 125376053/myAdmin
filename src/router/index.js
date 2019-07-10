@@ -14,13 +14,13 @@ export const adminRouterMap = [
         component: () => import ("@/pages/login.vue"),
     },
     {
-        path: '/123',
-        component: () => import ("@/pages/123.vue"),
+        path: '/register',
+        component: () => import ("@/pages/register.vue"),
     }
 ]
 
 export const constantRouterMap = [
-/*    {
+    {
         path: '/',
         component: Layout,
         redirect: '/scan/scanIndex',
@@ -29,7 +29,7 @@ export const constantRouterMap = [
         path: '*',
         component: Layout,
         redirect: 'scan/scanIndex',
-    },*/
+    },
     {
         path: '/scan',
         component: Layout,
@@ -75,7 +75,7 @@ export const constantRouterMap = [
         children: [
             {
                 /*有第三子集 前面要加斜杠*/
-                path: "/windowIndex",
+                path: "/zhang/windowIndex",
                 //component: () => import ("@/pages/zhang1.vue"),
                 component:zhang1,
                 redirect: '/zhang/windowIndex/three',

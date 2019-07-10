@@ -19,6 +19,9 @@
                 }
                 infor=JSON.stringify(infor)
                 window.localStorage.setItem('infor',infor)
+                this.$router.push({
+                    path:'/'
+                })
             }
         }
     }
