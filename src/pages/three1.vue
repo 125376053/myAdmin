@@ -1,11 +1,12 @@
 <template>
     <div>
-        <div>window11111111111111111111</div>
-        <router-view></router-view>
+        3333333333
     </div>
 </template>
 <script>
+    export default{
 
+    }
 </script>
 <style>
 

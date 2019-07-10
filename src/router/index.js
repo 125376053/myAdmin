@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Layout from '@/Layout'
-
+import zhang1 from '@/pages/zhang1.vue'
 Vue.use(Router)
 
 /*
@@ -10,34 +10,26 @@ Vue.use(Router)
 
 export const adminRouterMap = [
     {
-        path: '/scan',
-        component: Layout,
-        redirect: '/scan/scanIndex',
-        children: [
-            {
-                path: "scanIndex",
-                component: () => import ("@/pages/scan.vue"),
-                name: "scanIndex",
-                meta: {
-                    title: "扫描",
-                    icon: "iconfont icon-shouye-xuanzhong"
-                }
-            }
-        ]
+        path: '/login',
+        component: () => import ("@/pages/login.vue"),
+    },
+    {
+        path: '/123',
+        component: () => import ("@/pages/123.vue"),
     }
 ]
 
 export const constantRouterMap = [
-    {
+/*    {
         path: '/',
         component: Layout,
         redirect: '/scan/scanIndex',
     },
-    // {
-    //     path: '*',
-    //     component: Layout,
-    //     redirect: 'scan/scanIndex',
-    // },
+    {
+        path: '*',
+        component: Layout,
+        redirect: 'scan/scanIndex',
+    },*/
     {
         path: '/scan',
         component: Layout,
@@ -82,15 +74,43 @@ export const constantRouterMap = [
         },
         children: [
             {
-                path: "windowIndex",
-                component: () => import ("@/pages/zhang1.vue"),
+                /*有第三子集 前面要加斜杠*/
+                path: "/windowIndex",
+                //component: () => import ("@/pages/zhang1.vue"),
+                component:zhang1,
+                redirect: '/zhang/windowIndex/three',
                 name: "windowIndex",
                 meta: {
                     title: "窗口1",
                     icon: "iconfont icon-shouye-xuanzhong",
-                    open:true
+                    //open:true
                 },
                 hidden: false,
+
+                children:[
+                    {
+                        path: "three",
+                        component: () => import ("@/pages/three.vue"),
+                        name: "three",
+                        meta: {
+                            title: "三级",
+                            icon: "iconfont icon-shouye-xuanzhong",
+                            //open:true
+                        },
+                        hidden: false,
+                    },
+                    {
+                        path: "three1",
+                        component: () => import ("@/pages/three1.vue"),
+                        name: "three1",
+                        meta: {
+                            title: "三级1",
+                            icon: "iconfont icon-shouye-xuanzhong",
+                            //open:true
+                        },
+                        hidden: false,
+                    }
+                ]
             },
             {
                 path: "windowIndex2",
@@ -99,11 +119,10 @@ export const constantRouterMap = [
                 meta: {
                     title: "窗口2",
                     icon: "iconfont icon-shouye-xuanzhong",
-                    open:true
+                    //open:true
                 },
                 hidden: false,
-            },
-
+            }
         ]
     },
     {
@@ -114,22 +133,11 @@ export const constantRouterMap = [
             title: "order",
             icon: "iconfont icon-shouye-xuanzhong"
         }
-    },
-    {
-        path: "/login",
-        component: () =>
-            import ("@/pages/login"),
-        name: "clientLogin",
-        hidden: true,
-        meta: {
-            title: "登录",
-            icon: "el-icon-menu"
-        }
-    },
+    }
 ]
 export default new Router({
     scrollBehavior: () => ({
         y: 0
     }),
-    routes: constantRouterMap
+    routes: adminRouterMap
 })

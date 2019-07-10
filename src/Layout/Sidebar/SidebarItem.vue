@@ -49,7 +49,7 @@
                                                                                           class="el-icon-caret-right"></i>{{child.meta.title}}</span>
                             </el-menu-item>
                         </router-link>
-                        <div v-else @click="openWindow(child.meta.title)">
+                        <div v-else>
                             <el-menu-item :index="item.path+'/'+child.path">
                                 <!-- <img class="imgStyle" v-if="child.meta&&child.meta.icon" :src="'static/'+item.meta.icon+'.png'"> -->
                                 <i :class="child.meta.icon" v-if="child.meta&&child.meta.icon"></i>
@@ -66,7 +66,6 @@
 </template>
 
 <script>
-    var workwinQuickOder = null;
     export default {
         name: "SidebarItem",
         props: {
@@ -91,28 +90,6 @@
                     return true;
                 }
                 return false;
-            },
-            openWindow(server){
-                ixindev.winMessage({
-                    name:"HomeWin",
-                    param:"hello frome work",
-                    onSuccess: function(response) {},
-                    onFailure: function(error_code, error_message) {
-                        if(error_code==2120){
-                            if(workwinQuickOder == null){
-                                workwinQuickOder =  ixindev.open('http://localhost:8080?server='+server+'/#/order',"","resizable=1, dialog=no,left=20,top=20,width=960,height=600");
-                            }else{
-                                if (!workwinQuickOder || workwinQuickOder.closed) {
-                                    workwinQuickOder = null;
-                                    return;
-                                }
-                                workwinQuickOder.postMessage({ name: "pass" }, "*");
-                            }
-                        }else{
-                            alert(error_code+" : "+error_message);
-                        }
-                    }
-                });
             }
         }
     };

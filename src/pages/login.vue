@@ -19,9 +19,6 @@
                 }
                 infor=JSON.stringify(infor)
                 window.localStorage.setItem('infor',infor)
-                //window.opener.close();
-                console.log(window.opener.document)
-                console.log(window.opener.document.querySelector("#loginName"))
             }
         }
     }
