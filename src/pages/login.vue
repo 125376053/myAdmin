@@ -12,15 +12,17 @@
         },
         methods:{
             login(){
-                var infor = {
-                    name:'zhangsna',
-                    age:48,
-                    adress:'北京'
-                }
-                infor=JSON.stringify(infor)
-                window.localStorage.setItem('infor',infor)
-                this.$router.push({
-                    path:'/'
+                console.log(this.$store);
+                this.$store.dispatch('getLogin',{
+                    password: "zcj7416275",
+                    userAccno: "125376053@qq.com"
+                }).then(res=>{
+                    console.log(res);
+                    this.$router.push({
+                        path:'/'
+                    })
+                }).catch(err=>{
+                    console.log(err);
                 })
             }
         }

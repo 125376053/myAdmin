@@ -22,3 +22,23 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 npm install node-sass sass-loader -D
+
+
+var moke = {
+    //控制步骤
+    active:'',
+    // 页面带过来的参数
+    query:{
+        a:1
+    },
+    // 组件之间互相传递的参数
+    caozuo:{
+        keySize；123
+    },
+    // 接口数据
+    detail:{
+
+    }
+}
+// 全部缓存到vuex中
+// 最后将vuex生成的对象存储到sessionStorage中
