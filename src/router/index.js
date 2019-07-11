@@ -133,7 +133,23 @@ export const constantRouterMap = [
             title: "order",
             icon: "iconfont icon-shouye-xuanzhong"
         }
-    }
+    },
+    {
+        path: '/step',
+        component: Layout,
+        redirect: 'step/stepIndex',
+        children: [
+            {
+                path: "stepIndex",
+                component: () => import ("@/pages/step.vue"),
+                name: "stepIndex",
+                meta: {
+                    title: "步骤",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            }
+        ]
+    },
 ]
 export default new Router({
     scrollBehavior: () => ({

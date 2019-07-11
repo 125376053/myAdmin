@@ -32,13 +32,13 @@
             returnToFromPage() {
                 this.$router.push({path: '/auth/authIndex'})
             },
-            getTitle(){
+            /*getTitle(){
                 console.log(111111111)
                 let matched = this.$route.matched
                 console.log(matched);
                 console.log(matched[1].meta.title)
                 this.title=matched[1].meta.title
-            }
+            }*/
         },
         watch: {
             $route() {
