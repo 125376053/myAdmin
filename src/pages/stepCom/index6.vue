@@ -1,12 +1,22 @@
 <template>
     <div class="zuzhixinxi">
-        域名验证
+        确认订单
         <el-button @click="prev">上一步</el-button>
         <el-button @click="next">下一步</el-button>
+        <p>
+            当前选择的是
+            {{$parent.radio}}
+            {{$parent.detail}}
+        </p>
     </div>
 </template>
 <script>
     export default{
+        data(){
+            return{
+
+            }
+        },
         methods:{
             prev(){
                 if(this.$parent.active >=0){
