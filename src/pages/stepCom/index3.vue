@@ -1,23 +1,22 @@
 <template>
     <div class="zuzhixinxi">
         域名验证
-        <el-button @click="prev">上一步</el-button>
         <el-button @click="next">下一步</el-button>
     </div>
 </template>
 <script>
+    import { mapGetters } from "vuex"
     export default{
+        props:['stepArrLength'],
+        computed:{
+            ...mapGetters(['active'])
+        },
         methods:{
-            prev(){
-                if(this.$parent.active >=0){
-                    this.$parent.active--
-                    window.sessionStorage.setItem('active',this.$parent.active)
-                }
-            },
             next(){
-                if(this.$parent.active < this.$parent.stepArr.length-1){
-                    this.$parent.active++
-                    window.sessionStorage.setItem('active',this.$parent.active)
+                console.log(this.active);
+                if(this.active<this.stepArrLength-1){
+                    this.$store.dispatch('active',this.active+1)
+                    //window.sessionStorage.setItem('active',this.active)
                 }
             }
         }

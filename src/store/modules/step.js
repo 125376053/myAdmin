@@ -17,7 +17,8 @@ const step = {
     getters:{
         active: (state)=>{
             console.log('getters' + state.active);
-            return parseInt(window.sessionStorage.getItem('active')) || state.active
+            // parseInt(window.sessionStorage.getItem('active')) ||
+            return state.active
         }
     }
 }

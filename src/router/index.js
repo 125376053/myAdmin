@@ -150,6 +150,22 @@ export const constantRouterMap = [
             }
         ]
     },
+    {
+        path: '/pass',
+        component: Layout,
+        redirect: 'pass/stepIndex',
+        children: [
+            {
+                path: "passIndex",
+                component: () => import ("@/pages/pass.vue"),
+                name: "passIndex",
+                meta: {
+                    title: "密码强度",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            }
+        ]
+    },
 ]
 export default new VueRouter({
     scrollBehavior: () => ({

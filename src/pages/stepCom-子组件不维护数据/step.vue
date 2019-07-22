@@ -9,7 +9,7 @@
             ></el-step>
         </el-steps>
 
-        <div v-if="stepArr[active].title==='组织信息'">
+        <div v-show="stepArr[active].title==='组织信息'">
             <zuzhi ref="zuzhi"></zuzhi>
         </div>
         <div v-if="stepArr[active].title==='csr'">
@@ -45,14 +45,9 @@
             ziliao,
             order
         },
-        computed:{
-            active(){
-                return this.$store.getters.active
-            }
-        },
         data(){
             return{
-                //active:0,
+                active:parseInt(window.sessionStorage.getItem('active'))||0,
                 // 默认状态6种
                 stepArr:[
                     {
@@ -80,6 +75,8 @@
                         icon:'el-icon-edit'
                     }
                 ],
+
+                radio:parseInt(window.sessionStorage.getItem('radio')) || 1,
                 detail:{}
             }
         },
@@ -89,7 +86,7 @@
             next()
         },
         mounted(){
-
+            //alert('刷新')
         },
         methods:{
 
