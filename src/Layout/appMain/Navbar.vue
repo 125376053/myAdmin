@@ -1,19 +1,19 @@
 <template>
     <el-menu class="navbar" mode="horizontal">
         <div>
-            <!--<breadcrumb></breadcrumb>-->
-            <topBar></topBar>
+            <breadcrumb></breadcrumb>
+            <!--<topBar></topBar>-->
         </div>
     </el-menu>
 </template>
 
 <script>
-    // import Breadcrumb from '@/components/Breadcrumb'
-    import topBar from '@/components/topBar'
+    import Breadcrumb from '@/components/Breadcrumb'
+    //import topBar from '@/components/topBar'
     export default {
         components: {
-            topBar,
-            //Breadcrumb,
+            //topBar,
+            Breadcrumb,
         }
     }
 </script>

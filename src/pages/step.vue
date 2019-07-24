@@ -85,7 +85,7 @@
         },
         // 离开页面---清楚缓存 刷新不是离开
         beforeRouteLeave (to, from, next) {
-            window.sessionStorage.removeItem('active')
+            window.sessionStorage.removeItem('step')
             next()
         },
         mounted(){

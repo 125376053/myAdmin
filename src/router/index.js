@@ -34,13 +34,27 @@ export const constantRouterMap = [
         path: '/scan',
         component: Layout,
         redirect: '/scan/scanIndex',
+        name: "scan", //父菜单加name 是为了面包屑带上父级的title
+        meta:{
+            title:'扫描',
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
         children: [
             {
                 path: "scanIndex",
                 component: () => import ("@/pages/scan.vue"),
                 name: "scanIndex",
                 meta: {
-                    title: "扫描",
+                    title: "扫描1",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            },
+            {
+                path: "scanIndex2",
+                component: () => import ("@/pages/scan.vue"),
+                name: "scanIndex2",
+                meta: {
+                    title: "扫描2",
                     icon: "iconfont icon-shouye-xuanzhong"
                 }
             }
@@ -49,7 +63,12 @@ export const constantRouterMap = [
     {
         path: '/saomiao',
         component: Layout,
-        redirect: 'saomiao/saomiaoIndex',
+        redirect: '/saomiao/saomiaoIndex',
+        name: "saomiao",  //只有1级的话 面包屑不要加 name title
+        meta:{
+            title:'扫描体验',
+            icon: ""
+        },
         children: [
             {
                 path: "saomiaoIndex",
@@ -72,6 +91,7 @@ export const constantRouterMap = [
             icon: "iconfont icon-dingdan-copy",
             isAdmin:1
         },
+        name:'zhang',
         children: [
             {
                 /*有第三子集 前面要加斜杠*/
@@ -137,7 +157,12 @@ export const constantRouterMap = [
     {
         path: '/step',
         component: Layout,
-        redirect: 'step/stepIndex',
+        redirect: '/step/stepIndex', //redirect 以/开头
+        name:'step',
+        meta: {
+            title: "步骤",
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
         children: [
             {
                 path: "stepIndex",
@@ -153,7 +178,12 @@ export const constantRouterMap = [
     {
         path: '/pass',
         component: Layout,
-        redirect: 'pass/stepIndex',
+        name:'pass',
+        meta: {
+            title: "密码强度",
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
+        redirect: '/pass/stepIndex',
         children: [
             {
                 path: "passIndex",
@@ -163,6 +193,37 @@ export const constantRouterMap = [
                     title: "密码强度",
                     icon: "iconfont icon-shouye-xuanzhong"
                 }
+            }
+        ]
+    },
+    {
+        path: '/response',
+        component: Layout,
+        name:'response',
+        redirect: `/response/responseIndex`,
+        meta: {
+            title: "布局",
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
+        children: [
+            {
+                path: `responseIndex`,
+                component: () => import ("@/pages/response.vue"),
+                name: "responseIndex",
+                meta: {
+                    title: "布局",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            },
+            {
+                path: `responseIndex2/:id/:name`,
+                component: () => import ("@/pages/response2.vue"),
+                name: "responseIndex2",
+                meta: {
+                    title: "动态路由",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                },
+                hidden: true,
             }
         ]
     },
