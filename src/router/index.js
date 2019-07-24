@@ -221,9 +221,41 @@ export const constantRouterMap = [
                 name: "responseIndex2",
                 meta: {
                     title: "动态路由",
-                    icon: "iconfont icon-shouye-xuanzhong"
+                    icon: "iconfont icon-shouye-xuanzhong",
+                    sidebarPointer:'/response/responseIndex'
                 },
-                hidden: true,
+                hidden: true
+            }
+        ]
+    },
+    // 特殊的
+    {
+        path: '/server',
+        component: Layout,
+        name:'response',
+        redirect: `/server/one`,
+        meta: {
+            title: "服务器",
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
+        children: [
+            {
+                path: 'one',
+                component: () => import ("@/pages/server.vue"),
+                name: "one",
+                meta: {
+                    title: "one",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            },
+            {
+                path: 'two',
+                component: () => import ("@/pages/server.vue"),
+                name: "two",
+                meta: {
+                    title: "two",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
             }
         ]
     },

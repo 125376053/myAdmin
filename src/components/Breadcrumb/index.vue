@@ -1,17 +1,19 @@
 <template>
-    <el-breadcrumb class="app-breadcrumb" separator="/">
-        <transition-group name="breadcrumb">
-            <el-breadcrumb-item v-for="(item,index)  in levelList" :key="item.path" v-if="item.meta.title">
-                <!--最后一级没有跳转  有可能的条件item.redirect==='noredirect'||-->
-                <span v-if="index==levelList.length-1" class="no-redirect">
+    <div style="height: 50px;">
+        <el-breadcrumb class="app-breadcrumb" separator="/">
+            <transition-group name="breadcrumb">
+                <el-breadcrumb-item v-for="(item,index)  in levelList" :key="item.path" v-if="item.meta.title">
+                    <!--最后一级没有跳转  有可能的条件item.redirect==='noredirect'||-->
+                    <span v-if="index==levelList.length-1" class="no-redirect">
                     {{item.meta.title}}
                 </span>
-                <router-link v-else :to="item.redirect||item.path">
-                    {{item.meta.title}}
-                </router-link>
-            </el-breadcrumb-item>
-        </transition-group>
-    </el-breadcrumb>
+                    <router-link v-else :to="item.redirect||item.path">
+                        {{item.meta.title}}
+                    </router-link>
+                </el-breadcrumb-item>
+            </transition-group>
+        </el-breadcrumb>
+    </div>
 </template>
 
 <script>

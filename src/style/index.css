@@ -37,16 +37,18 @@ a:link,a:visited,a:hover,a:active{
 .is-active{
     background: #eee!important;
 }
+
 /*选中子菜单激活父菜单*/
-/*.is-active>div{
+.is-active>div{
     color:red!important;
     background: #eee!important;
 }
 .is-active>div>i{
     color:red!important;
     background: transparent!important;
-}*/
+}
 
+/*鼠标进入效果*/
 .el-menu-item:hover{
     color:red!important;
     background: rgba(0,0,0,.8)!important;
