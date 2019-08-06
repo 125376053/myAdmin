@@ -10,7 +10,7 @@ app.listen(8082);
 
 app.set('view engine','html');
 app.engine('.html',require('ejs').__express);
-app.use(express.static('./dist'));
+app.use(express.static(path.join(__dirname,'dist')));
 
 app.get('/', function(req, res, next) {
     res.render('./dist/index.html')

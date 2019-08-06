@@ -12,10 +12,13 @@ router.beforeEach((to, from, next) => {
 
     if (store.getters.token) {
         //alert('登录')
-        // 登录后去登录页 跳转到 /
-        if (to.path === '/login') {
-            next({ path: '/' })
-        } else {
+        // 登录后去登录页 注册页 跳转到 /
+        if(allowLoginPath(to.path)){
+            next({path:'/'})
+        }else{
+        //if (to.path === '/login') {
+            //next({ path: '/' })
+        //} else {
             if (!routeFlag) {//1假
                 console.log('刷新以后'+routeFlag);
                 // 2动态生成路由
@@ -44,7 +47,8 @@ router.afterEach(() => {
     NProgress.done()
 })
 
-// 未登录路由拦截
+// 未登录路由拦截 不存在的路由去登录页 存在的路由去自己的页面 不需要登录可以直接访问的页面
+// 没有登录时 去登录 注册页放行 去不存在的地址 跳转到登录页
 function notLoginPage(curPath){
     var routeArr = router.options.routes;
     var v=routeArr.find(value=>{
@@ -53,6 +57,15 @@ function notLoginPage(curPath){
     //console.log(v);
     return v
 }
+
+// 已经登录时 去登陆页 注册页 不允许去
+function allowLoginPath(curPath){
+    var v=adminRouterMap.find(value=>{
+        return value.path == curPath
+    });
+    return v;
+}
+
 
 // 动态路由
 function routerArray(){
