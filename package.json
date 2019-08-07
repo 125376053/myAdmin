@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.6.0",
     "element-ui": "^2.7.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
@@ -30,6 +31,7 @@
     "chalk": "^2.0.1",
     "compression": "^1.7.4",
     "compression-webpack-plugin": "^1.1.12",
+    "connect": "^3.7.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^3.0.0",

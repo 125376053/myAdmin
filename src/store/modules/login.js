@@ -17,7 +17,7 @@ const login = {
         getLogin({ commit }, params) {
             //console.log(params);
             return new Promise((resolve, reject) => {
-                productList({
+                /*productList({
                     password: params.password,
                     userAccno: params.userAccno
                 }).then(res => {
@@ -27,6 +27,11 @@ const login = {
                     resolve(res)
                 }).catch(error => {
                     reject(error)
+                })*/
+                commit('setToken', 'token=123=abc=?!zhangchaojie')
+                commit('setUserID', '090900511')
+                this.$router.push({
+                    path:'/'
                 })
             })
         },

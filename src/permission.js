@@ -2,7 +2,7 @@ import router from './router'
 import { adminRouterMap , constantRouterMap } from './router'
 import NProgress from 'nprogress'
 var routeFlag =false
-import 'nprogress/nprogress.css'
+import   'nprogress/nprogress.css'
 import store from '@/store'
 NProgress.configure({
     showSpinner: false
@@ -34,9 +34,11 @@ router.beforeEach((to, from, next) => {
         }
     } else {
         //alert('未登录')
+        //没有登录 去一个不需要登录的地址 放行
         if(notLoginPage(to.path)){
             next()
         }else{
+            //没有登录默认去登录页
             next('/login')
         }
         NProgress.done()

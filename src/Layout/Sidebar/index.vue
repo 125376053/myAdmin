@@ -71,15 +71,12 @@
             },
             handleOpen () {
                 console.log('收起')
-                console.log(key, keyPath);
             },
             handleClose () {
                 console.log('关闭')
-                console.log(key, keyPath);
             },
             handSelect(key, keyPath){
                 console.log('选中')
-                console.log(key, keyPath);
             }
         }
     };

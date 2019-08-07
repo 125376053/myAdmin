@@ -60,7 +60,7 @@ module.exports = {
         // Paths
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
-        assetsPublicPath: './',
+        assetsPublicPath: '/', //自己打开的话./ 服务器打开/  生产环境下部署/ 自己查看部署./
 
         /**
          * Source Maps

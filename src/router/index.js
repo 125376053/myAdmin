@@ -261,6 +261,7 @@ export const constantRouterMap = [
     },
 ]
 export default new VueRouter({
+    mode: 'history', //生产环境下history 自己部署注释掉
     scrollBehavior: () => ({
         y: 0
     }),
