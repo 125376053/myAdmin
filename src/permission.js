@@ -2,7 +2,7 @@ import router from './router'
 import { adminRouterMap , constantRouterMap } from './router'
 import NProgress from 'nprogress'
 var routeFlag =false
-import   'nprogress/nprogress.css'
+import 'nprogress/nprogress.css'
 import store from '@/store'
 NProgress.configure({
     showSpinner: false

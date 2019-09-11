@@ -2,11 +2,17 @@
 import App from './App'
 import router from './router'
 import store from "./store"
-//import ElementUI from 'element-ui'
+
+import ElementUI from 'element-ui'
 //import 'element-ui/lib/theme-chalk/index.css'
-// import './theme/index.css'  // theme自定义主题文件夹
+//import './theme/index.css'  // theme自定义主题文件夹
+import "./theme/index.css" //命令行主题色 默认根目录 theme主题
+
+// 使用et 编译主题 修改element-variables.scss
+
+
 import "./permission"
-//Vue.use(ElementUI);
+Vue.use(ElementUI);
 Vue.config.productionTip = false
 import "@/style/index.css"
 
