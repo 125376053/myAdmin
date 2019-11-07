@@ -5,24 +5,19 @@ import store from "./store"
 
 import ElementUI from 'element-ui'
 //import 'element-ui/lib/theme-chalk/index.css'
-//import './theme/index.css'  // theme自定义主题文件夹
-import "./theme/index.css" //命令行主题色 默认根目录 theme主题
-
+import "../theme/index.css" //命令行主题色 默认根目录 theme主题
 // 使用et 编译主题 修改element-variables.scss
 
-
+require("babel-polyfill")
 import "./permission"
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 import "@/style/index.css"
 
-
 import * as utils from './utils';
 //获取对象的所有属性
 Object.keys(utils).forEach(key => {
-    //console.log(key) //过滤器函数名字
-    //console.log(utils[key])
-    Vue.prototype[key]=utils[key]
+    Vue.prototype[key] = utils[key]
 });
 
 new Vue({

@@ -285,7 +285,7 @@
       width: 14px;
       height: 14px; }
     .el-timeline-item__node--primary {
-      background-color: red; }
+      background-color: green; }
     .el-timeline-item__node--success {
       background-color: #67C23A; }
     .el-timeline-item__node--warning {
@@ -293,7 +293,7 @@
     .el-timeline-item__node--danger {
       background-color: #F56C6C; }
     .el-timeline-item__node--info {
-      background-color: yellow; }
+      background-color: #909399; }
   .el-timeline-item__dot {
     position: absolute;
     display: -webkit-box;

@@ -37,6 +37,7 @@
             },
             currentRoute() {
                 const matchedRouteArr = this.$route.matched
+                console.log(matchedRouteArr)
                 for (let i = matchedRouteArr.length - 1; i >= 0; i--) {
                     const matchedRoutePath = this.effectiveRouteArr.filter(el => el === this.$route.path)[0]
                     //  && !this.$route.query.serverPointer
@@ -63,10 +64,17 @@
                         continue
                     } else if (route.children && route.children.length > 0) {
                         route.children.forEach(child => {
-                            child.hidden ? null : routerArr.push(`${route.path}/${child.path}`)
+                           if(child.children && child.children.length > 0){
+                               child.children.forEach(child2 => {
+                                   child2.hidden ? null : routerArr.push(`${child.path}/${child2.path}`)
+                               })
+                           }else{
+                               child.hidden ? null : routerArr.push(`${route.path}/${child.path}`)
+                           }
                         })
                     }
                 }
+                console.log(routerArr);
                 return routerArr
             },
             handleOpen () {

@@ -13,11 +13,11 @@
         methods:{
             login(){
                 console.log(this.$store);
+
                 this.$store.dispatch('getLogin',{
                     password: "zcj7416275",
                     userAccno: "125376053@qq.com"
                 }).then(res=>{
-                    console.log(res);
                     this.$router.push({
                         path:'/'
                     })

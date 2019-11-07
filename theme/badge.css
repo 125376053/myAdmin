@@ -279,12 +279,12 @@
       right: 0;
       border-radius: 50%; }
     .el-badge__content--primary {
-      background-color: red; }
+      background-color: green; }
     .el-badge__content--success {
       background-color: #67C23A; }
     .el-badge__content--warning {
       background-color: #E6A23C; }
     .el-badge__content--info {
-      background-color: yellow; }
+      background-color: #909399; }
     .el-badge__content--danger {
       background-color: #F56C6C; }

@@ -9,7 +9,9 @@
         </el-aside>
 
         <el-main class="contentMain">
-            <appMain></appMain>
+            <el-scrollbar style="height: 100%;">
+                <appMain style="padding:20px;"></appMain>
+            </el-scrollbar>
         </el-main>
     </el-container>
 </template>

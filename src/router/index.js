@@ -19,72 +19,11 @@ export const adminRouterMap = [
     }
 ]
 
-export const constantRouterMap = [
-    {
-        path: '/',
-        component: Layout,
-        redirect: '/scan/scanIndex',
-    },
-    {
-        path: '*',
-        component: Layout,
-        redirect: 'scan/scanIndex',
-    },
-    {
-        path: '/scan',
-        component: Layout,
-        redirect: '/scan/scanIndex',
-        name: "scan", //父菜单加name 是为了面包屑带上父级的title
-        meta:{
-            title:'扫描',
-            icon: "iconfont icon-shouye-xuanzhong"
-        },
-        children: [
-            {
-                path: "scanIndex",
-                component: () => import ("@/pages/scan.vue"),
-                name: "scanIndex",
-                meta: {
-                    title: "扫描1",
-                    icon: "iconfont icon-shouye-xuanzhong"
-                }
-            },
-            {
-                path: "scanIndex2",
-                component: () => import ("@/pages/scan.vue"),
-                name: "scanIndex2",
-                meta: {
-                    title: "扫描2",
-                    icon: "iconfont icon-shouye-xuanzhong"
-                }
-            }
-        ]
-    },
-    {
-        path: '/saomiao',
-        component: Layout,
-        redirect: '/saomiao/saomiaoIndex',
-        name: "saomiao",  //只有1级的话 面包屑不要加 name title
-        meta:{
-            title:'扫描体验',
-            icon: ""
-        },
-        children: [
-            {
-                path: "saomiaoIndex",
-                component: () => import ("@/pages/saomiao.vue"),
-                name: "saomiaoIndex",
-                meta: {
-                    title: "扫描体验",
-                    icon: "iconfont icon-shouye-xuanzhong"
-                }
-            }
-        ]
-    },
+export const admin = [
     {
         path: '/zhang',
         component: Layout,
-        redirect: '/zhang/windowIndex',
+        redirect: '/zhang/windowIndex/three',
         /*2级菜单 父元素必须要有标题*/
         meta: {
             title: "快速签发服务",
@@ -96,8 +35,8 @@ export const constantRouterMap = [
             {
                 /*有第三子集 前面要加斜杠*/
                 path: "/zhang/windowIndex",
-                //component: () => import ("@/pages/zhang1.vue"),
-                component:zhang1,
+                component: () => import ("@/pages/zhang1.vue"),
+                //component:zhang1,
                 redirect: '/zhang/windowIndex/three',
                 name: "windowIndex",
                 meta: {
@@ -153,6 +92,91 @@ export const constantRouterMap = [
             title: "order",
             icon: "iconfont icon-shouye-xuanzhong"
         }
+    },
+]
+
+export const constantRouterMap = [
+    {
+        path: '/',
+        component: Layout,
+        redirect: '/scan/scanIndex',
+    },
+    {
+        path: '*',
+        component: Layout,
+        redirect: 'scan/scanIndex',
+    },
+    {
+        path: '/cpc',
+        component: Layout,
+        redirect: 'cpc/cpcIndex',
+        name:'cpc',
+        meta:{
+            title:'扫描',
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
+        children:[
+            {
+                path: "cpcIndex",
+                component: () => import ("@/pages/c-p-c/cpcIndex.vue"),
+                name: "cpcIndex",
+                meta: {
+                    title: "扫描1",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            },
+        ]
+    },
+    {
+        path: '/scan',
+        component: Layout,
+        redirect: '/scan/scanIndex',
+        name: "scan", //父菜单加name 是为了面包屑带上父级的title
+        meta:{
+            title:'扫描',
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
+        children: [
+            {
+                path: "scanIndex",
+                component: () => import ("@/pages/scan.vue"),
+                name: "scanIndex",
+                meta: {
+                    title: "扫描1",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            },
+            {
+                path: "scanIndex2",
+                component: () => import ("@/pages/scan.vue"),
+                name: "scanIndex2",
+                meta: {
+                    title: "扫描2",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            }
+        ]
+    },
+    {
+        path: '/saomiao',
+        component: Layout,
+        redirect: '/saomiao/saomiaoIndex',
+        name: "saomiao",  //只有1级的话 面包屑不要加 name title
+        meta:{
+            title:'扫描体验',
+            icon: ""
+        },
+        children: [
+            {
+                path: "saomiaoIndex",
+                component: () => import ("@/pages/saomiao.vue"),
+                name: "saomiaoIndex",
+                meta: {
+                    title: "扫描体验",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            }
+        ]
     },
     {
         path: '/step',
@@ -260,6 +284,7 @@ export const constantRouterMap = [
         ]
     },
 ]
+
 export default new VueRouter({
     mode: 'history', //生产环境下history 自己部署注释掉
     scrollBehavior: () => ({

@@ -28,11 +28,11 @@ const login = {
                 }).catch(error => {
                     reject(error)
                 })*/
+
+
                 commit('setToken', 'token=123=abc=?!zhangchaojie')
                 commit('setUserID', '090900511')
-                this.$router.push({
-                    path:'/'
-                })
+                resolve()
             })
         },
     },

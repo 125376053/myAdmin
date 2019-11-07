@@ -37,8 +37,8 @@
                     //console.log(item);
                     return item.name
                 })
-                console.log(this.$route.matched)
-                console.log(matched);
+                //console.log(this.$route.matched)
+                //console.log(matched);
                 /*const first = matched[0]
                   if (first && first.name !== 'dashboard') {
                     matched = [{
@@ -49,7 +49,7 @@
                     }].concat(matched)
                   }*/
                 this.levelList = matched
-                console.log(this.levelList)
+                //console.log(this.levelList)
             }
         }
     }

@@ -1,80 +1,82 @@
 import router from './router'
-import { adminRouterMap , constantRouterMap } from './router'
+import {adminRouterMap, constantRouterMap, admin} from './router'
 import NProgress from 'nprogress'
-var routeFlag =false
+var routeFlag = false
 import 'nprogress/nprogress.css'
 import store from '@/store'
 NProgress.configure({
     showSpinner: false
 })
-router.beforeEach((to, from, next) => {
-    NProgress.start()
 
+router.beforeEach((to, from, next) => {
     if (store.getters.token) {
-        //alert('登录')
-        // 登录后去登录页 注册页 跳转到 /
-        if(allowLoginPath(to.path)){
-            next({path:'/'})
-        }else{
-        //if (to.path === '/login') {
-            //next({ path: '/' })
-        //} else {
-            if (!routeFlag) {//1假
-                console.log('刷新以后'+routeFlag);
+        if (notLoginRoute(to.path)) {
+            next({path: '/'})
+        } else {
+            //1假
+            if (!routeFlag) {
+                console.log('刷新以后' + routeFlag);
                 // 2动态生成路由
-                routerArray() //3动态路由
-                routeFlag=true //4真
-                next(to.fullPath) // 主要是to.fullPath 会重定向到else中 else又next重定向到这里 不管是真还是假 刷新的时候判断中的真假都走了 就会重新赋值路由
-            }else{
-                console.log('没有刷新'+routeFlag);
-                //alert(true)
+                routerArray()
+                // 3 真
+                routeFlag = true
+                // 4 next 传参标示会循环拦截路由 直到条件为假
+                next(to.fullPath)
+            } else {
+                console.log('没有刷新' + routeFlag)
+                // 5 next不传参不会循环拦截路由
                 next()
-                return
             }
         }
     } else {
-        //alert('未登录')
-        //没有登录 去一个不需要登录的地址 放行
-        if(notLoginPage(to.path)){
+        if (notLoginRoute(to.path)) {
             next()
-        }else{
-            //没有登录默认去登录页
+        } else {
             next('/login')
         }
-        NProgress.done()
     }
 })
 
 router.afterEach(() => {
+    console.log('路由拦截以后');
     NProgress.done()
 })
 
-// 未登录路由拦截 不存在的路由去登录页 存在的路由去自己的页面 不需要登录可以直接访问的页面
-// 没有登录时 去登录 注册页放行 去不存在的地址 跳转到登录页
-function notLoginPage(curPath){
-    var routeArr = router.options.routes;
-    var v=routeArr.find(value=>{
+
+// 不需要登录的路由
+function notLoginRoute(curPath) {
+    var v = adminRouterMap.find(value => {
         return value.path == curPath
     });
-    //console.log(v);
+    //console.log(v) // undefined object
     return v
 }
 
-// 已经登录时 去登陆页 注册页 不允许去
-function allowLoginPath(curPath){
-    var v=adminRouterMap.find(value=>{
-        return value.path == curPath
-    });
-    return v;
-}
-
-
 // 动态路由
-function routerArray(){
+function routerArray() {
+    // 不需要登录的路由
     var arr = []
     for (const route of constantRouterMap) {
         arr.push(route)
     }
-    router.options.routes = router.options.routes.concat(arr)
+
+    // 如果是管理员
+    const haha = 1
+    // 在哪个位置添加路由
+    let index = arr.findIndex((item) => {
+        return item.path == '/step'
+    })
+    if (haha == 1) {
+        for (const route of admin) {
+            arr.splice(index, 0, route)
+        }
+    }
+
+    // 拼接路由
+    // router.options.routes = router.options.routes.concat(arr)
+    router.options.routes = [...router.options.routes, ...arr]
+    // 插入路由
     router.addRoutes(arr)
 }
+
+

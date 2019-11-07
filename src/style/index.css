@@ -1,5 +1,4 @@
 @import "iconfont.css";
-@import "client.css";
 *{
     margin: 0;
     padding: 0;
@@ -67,6 +66,6 @@ a:link,a:visited,a:hover,a:active{
 }
 /*内容区域*/
 .contentMain{
-    position: absolute;left:200px;right:0;bottom:0;top:50px;
+    position: absolute;left:200px;right:0;bottom:0;top:50px; padding: 0!important;
 }
 

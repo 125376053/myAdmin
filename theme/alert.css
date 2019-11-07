@@ -286,13 +286,13 @@
     background-color: #67C23A;
     color: #FFFFFF; }
   .el-alert--info.is-light {
-    background-color: #ffffe6;
-    color: yellow; }
+    background-color: #f4f4f5;
+    color: #909399; }
   .el-alert--info.is-dark {
-    background-color: yellow;
+    background-color: #909399;
     color: #FFFFFF; }
   .el-alert--info .el-alert__description {
-    color: yellow; }
+    color: #909399; }
   .el-alert--warning.is-light {
     background-color: #fdf6ec;
     color: #E6A23C; }
