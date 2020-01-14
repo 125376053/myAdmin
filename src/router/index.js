@@ -1,8 +1,8 @@
-//import Vue from 'vue'
-//import Router from 'vue-router'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import Layout from '@/Layout'
 import zhang1 from '@/pages/zhang1.vue'
-//Vue.use(Router)
+Vue.use(VueRouter)
 
 /*
 面包屑配置 如果只有菜单只显示一级 就将父级的title置空

@@ -33,19 +33,19 @@ a:link,a:visited,a:hover,a:active{
     content: '';
 }
 /*选中导航增加背景样式*/
-.is-active{
-    background: #eee!important;
+.menu-wrapper .is-active{
+    background: green!important;
 }
 
 /*选中子菜单激活父菜单*/
-.is-active>div{
+/*.is-active>div{
     color:red!important;
     background: #eee!important;
 }
 .is-active>div>i{
     color:red!important;
     background: transparent!important;
-}
+}*/
 
 /*鼠标进入效果*/
 .el-menu-item:hover{

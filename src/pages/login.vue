@@ -1,6 +1,10 @@
 <template>
-    <div>
-        <el-button @click="login">登录</el-button>
+    <div class="loginWrap">
+        <div style="width: 100%;height: 100px;background: #ccc;position: fixed;">123</div>
+        <div style="height:100px;"></div>
+        <div class="login" style="height: 4000px;">
+            <el-button @click="login">登录</el-button>
+        </div>
     </div>
 </template>
 <script>

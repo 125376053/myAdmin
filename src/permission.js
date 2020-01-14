@@ -9,6 +9,7 @@ NProgress.configure({
 })
 
 router.beforeEach((to, from, next) => {
+    NProgress.start()
     if (store.getters.token) {
         if (notLoginRoute(to.path)) {
             next({path: '/'})
@@ -35,6 +36,7 @@ router.beforeEach((to, from, next) => {
             next('/login')
         }
     }
+    NProgress.done()
 })
 
 router.afterEach(() => {
