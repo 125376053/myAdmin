@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h2>正则表达式验证域名</h2>
+	<input type="txt" id="domain">
+	<input type="button" class="button" value="验证" onclick="checkDomain()">
+	<input type="txt" id="result">
+</body>
+<script>
+	/*
+	1 不支持https,http等协议，中文
+	2 支持通配符域名(*)，二级域名(123.com)，标准域名验证(www.baidu.com www.baidu.com.cn)
+	*/
+
+	/*
+	 邮箱正则表达式
+	 /^((([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6}\;))*(([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})))$/
+	*/
+
+	/*
+     if(/.*[\u4e00-\u9fa5]+.*$/.test(domain)) {
+
+     }else{
+
+     }
+    */
+
+    // 通配符
+    var reg = /^(?=^.{3,255}$)(\*|[a-zA-Z0-9][-a-zA-Z0-9]{0,62})(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+$/
+    // 不支持通配符
+    var reg4 = /^(?=^.{3,255}$)([a-zA-Z0-9][-a-zA-Z0-9]{0,62})(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+$/
+    // 支持中文 可以检测是否含有汉子 来判断是否是中文域名
+    var reg5 = /^(?=^.{3,255}$)([a-zA-Z0-9\u4E00-\u9FA5\uF900-\uFA2D][-a-zA-Z0-9\u4E00-\u9FA5\uF900-\uFA2D]{0,62})(\.[a-zA-Z0-9\u4E00-\u9FA5\uF900-\uFA2D][-a-zA-Z0-9\u4E00-\u9FA5\uF900-\uFA2D]{0,62})+$/
+	function checkDomain() {
+		var domain = document.getElementById("domain").value;
+		var result = reg.test(domain);
+		if(result == true) {
+			document.getElementById("result").value = "域名验证通过";
+
+		} else {
+			document.getElementById("result").value = "域名验证不通过";
+		}
+    }
+
+	// var reg = /^a\.a\.a\.a/;
+	var str ="www-123.baidu.com";
+	console.log(reg.test(str));
+
+</script>
+</html>

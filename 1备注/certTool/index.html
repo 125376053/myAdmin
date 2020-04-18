@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>证书选型工具</title>
+    <link rel="stylesheet" href="css/element.css">
+    <link rel="stylesheet" href="css/all.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box" class="certTab" v-cloak>
+
+    <div class="headerTop">
+        <h3>证书选型工具</h3>
+        <div class="tabBtn">
+            <p>用户类型:</p>
+            <ul>
+                <li
+                        :class="{active:curIndex==index}"
+                        v-for="(item,index) in tabData"
+                        @click="userClick(item,index)"
+                >
+                    {{item.title}}
+                </li>
+            </ul>
+        </div>
+        <div class="tabBtn">
+            <p>行业类型:</p>
+            <ul v-if="showIndex1">
+                <li
+                        v-if="item1.title"
+                        :class="{active:curIndex1==index1}"
+                        v-for="(item1,index1) in tabData[clickIndex1].children"
+                        @click="hyClick(item1,index1)"
+                >
+                    {{item1.title}}
+                </li>
+            </ul>
+        </div>
+        <div class="tabBtn">
+            <p>域名类型:</p>
+            <ul v-if="showIndex2">
+                <li
+                        :class="{active:curIndex2==index2}"
+                        v-for="(item2,index2) in tabData[clickIndex1].children[clickIndex2].children"
+                        @click="ymClick(item2,index2)"
+                >
+                    {{item2.title}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--
+    private String optimalSafety;//最佳安全
+	private String bestUseType;//最多使用类型
+	private String bestPerformance;//最佳性价比
+    -->
+    <ul class="detail" v-if="isDetail">
+        <li v-if="reData.optimalSafety_product&&reData.optimalSafety_product.productName">
+            <p class="title">最佳安全</p>
+            <div class="content">
+                <p>
+                    <span>产品:</span>
+                    <span>{{reData.optimalSafety_product.productName}}</span>
+                </p>
+            </div>
+        </li>
+
+        <li v-if="reData.bestUseType_product&&reData.bestUseType_product.productName">
+            <p class="title">最多使用类型</p>
+            <div class="content">
+                <p>
+                    <span>产品:</span>
+                    <span>{{reData.bestUseType_product.productName}}</span>
+                </p>
+            </div>
+        </li>
+
+        <li v-if="reData.bestPerformance_product&&reData.bestPerformance_product.productName">
+            <p class="title">最佳性价比</p>
+            <div class="content">
+                <p>
+                    <span>产品:</span>
+                    <span>{{reData.bestPerformance_product.productName}}</span>
+                </p>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+</body>
+</html>
+
+<script src="js/jquery-1.11.0.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/element.js"></script>
+<script>
+    new Vue({
+        el: '#box',
+        data: {
+            curIndex:-1, //默认不选择颜色
+            curIndex1:-1, //默认不选择颜色
+            curIndex2:-1, //默认不选择颜色
+
+            showIndex1:0, //是否显示2级菜单
+            showIndex2:0, //是否显示3级菜单
+
+            clickIndex1:0, // 点击获取2级数据
+            clickIndex2:0, // 点击获取3级数据
+
+            isDetail:false,
+            reData:{},
+            tabData:[
+                {
+                    title:'企业/事业单位',
+                    children:[
+                        {
+                            title:'金融/支付/保险',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        },
+                        {
+                            title:'政府/教育/医疗',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        },
+                        {
+                            title:'科技/互联网/媒体',
+                            children:[
+                                {
+                                    title:'通配符'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'多域名通配符'
+                                },
+                                {
+                                    title:'单域名'
+                                },
+                            ]
+                        },
+                        {
+                            title:'其他行业',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'小微企业',
+                    children:[
+                        {
+                            title:'企业官网',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        },
+                        {
+                            title:'企业商城',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        },
+                        {
+                            title:'小程序/APP应用',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        },
+                        {
+                            title:'OA/管理系统',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        },
+                        {
+                            title:'论坛/新媒体',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        },
+                        {
+                            title:'其他业务',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'多域名'
+                                },
+                                {
+                                    title:'通配符'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title:'个人',
+                    children:[
+                        {
+                            title:'',
+                            children:[
+                                {
+                                    title:'单域名'
+                                },
+                                {
+                                    title:'通配符'
+                                },
+                            ]
+                        }
+                    ]
+                }
+            ],
+
+            curTitle:'',
+            curTitle1:'',
+            curTitle2:''
+        },
+        methods: {
+            userClick(item,index){
+                this.isDetail = false //隐藏详情
+                this.showIndex1=1 //显示1级
+                this.showIndex2=0 //隐藏2级
+
+                this.curIndex1=-1 //重置2级颜色
+                this.curIndex = index
+
+                this.curTitle = item.title
+
+                this.clickIndex1=index //点击事件
+                this.clickIndex2= 0 //点击事件
+
+                // 个人用户直接显示2级
+                if(this.curIndex==2){
+                    this.curTitle1 = ''
+                    this.showIndex2=1 //隐藏2级
+                    this.curIndex2=-1 //重置2级颜色
+                }
+            },
+            hyClick(item1,index1){
+                this.showIndex2=1
+
+                this.curIndex2=-1 //重置索引
+                this.curIndex1 = index1
+
+                this.clickIndex2=index1 //点击事件
+
+                this.curTitle1 = item1.title
+
+                this.isDetail = false //隐藏详情
+            },
+            ymClick(item2,index2){
+                this.isDetail = true
+                this.curIndex2 = index2
+
+                this.curTitle2 = item2.title
+
+
+                console.log(this.curTitle, this.curTitle1, this.curTitle2);
+                this.sendData()
+
+            },
+            sendData(){
+                var that = this
+                let postJson = {};
+                postJson['userType'] = this.curTitle;
+                postJson['industryType'] = this.curTitle1;
+                postJson['domainType'] = this.curTitle2;
+                postJson['optimalSafety'] = '';
+                postJson['bestUseType'] = '';
+                postJson['bestPerformance'] = '';
+                var http = window.location.origin;
+                var url = http + '/api/toolbox/selectTools'
+                //var url = 'https://cim.yunssl.cn/api/toolbox/selectTools'  //用来测试
+                $.ajax({
+                    url:url,
+                    type:'POST',
+                    data :JSON.stringify(postJson),
+                    contentType:'text/plain;charset=UTF-8; charset=UTF-8',
+                    success:function(data){
+                        console.log(data);
+                        that.reData = data.data
+                        console.log(that.reData);
+                        console.log(that.reData.bestPerformance_product.productName);
+                        console.log(that.reData.bestUseType_product.productName);
+                        console.log(that.reData.optimalSafety_product.productName);
+                    }
+                })
+            }
+        }
+    })
+</script>

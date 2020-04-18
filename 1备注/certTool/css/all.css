@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+}
+.certTab{
+    width: 1000px;
+    margin: 20px auto 0;
+}
+
+.headerTop{
+    padding-left: 50px;
+}
+
+.certTab h3{
+    height: 50px;
+    line-height: 50px;
+}
+.tabBtn{
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.tabBtn p{
+    width: 80px;
+    float:left;
+    margin-top: 5px;
+}
+.tabBtn ul{
+    width:calc(100% - 150px);
+    float:left;
+}
+.tabBtn ul li{
+    float:left;
+    padding: 0 15px;
+    border: 1px solid #ccc;
+    border-right: 0;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+}
+.tabBtn ul li:last-child{
+    border-right: 1px solid #ccc;
+}
+.tabBtn ul li.active{
+    background: red;
+    color:#fff;
+}
+
+.detail{
+    margin-top: 40px;
+}
+.detail li{
+    float:left;
+    width: 250px;
+    height: 250px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+}
+.detail li .title{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background:rgba(228, 228, 228, 1);
+}
+.detail li .content{
+    padding: 20px;
+}
+.detail li .content p{
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+.detail li .content .btn{
+    margin-left: 50px;
+}

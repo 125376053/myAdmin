@@ -1,0 +1,41 @@
+// 申请证书
+    // 最新step 父子组件通信模式 申请证书
+    {
+        path: '/newStep',
+        component: Layout,
+        redirect: '/newStep/1', //redirect 以/开头
+        name:'newStep',
+        meta: {
+            title: "申请证书",
+            icon: "iconfont icon-shouye-xuanzhong"
+        },
+        children: [
+            {
+                path: "1",
+                component: () => import ("@/pages/newStep/1.vue"),
+                name: "1",
+                meta: {
+                    title: "下单",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            },
+            {
+                path: "newStepIndex",
+                component: () => import ("@/pages/newStep/step.vue"),
+                name: "newStepIndex",
+                meta: {
+                    title: "新版步骤条",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            },
+            {
+                path: "2",
+                component: () => import ("@/pages/newStep/2.vue"),
+                name: "2",
+                meta: {
+                    title: "订单列表",
+                    icon: "iconfont icon-shouye-xuanzhong"
+                }
+            }
+        ]
+    },
